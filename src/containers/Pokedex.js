@@ -20,9 +20,6 @@ useEffect(()=>{
                         name: pokemon.name
                     }
                     newPokemonData.push(pokemonObject)
-
-                    console.log("PokemonObject", pokemonObject)
-                    console.log("pokemon", pokemon)
                 });
                 setPokemonData(newPokemonData)
         }
