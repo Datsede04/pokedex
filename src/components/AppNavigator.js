@@ -24,6 +24,10 @@ function AppNavigator() {
              <Link to="/" className={classes.Link}>
                  <Typography className={classes.title} variant='h6'>Pokedex</Typography>
              </Link>
+
+             <Link to="/favorites" className={classes.Link}>
+                 <Typography className={classes.title} style={{marginLeft:15}} variant='h6'>Favorites</Typography>
+             </Link>
          </Toolbar>
       </AppBar>
     </>

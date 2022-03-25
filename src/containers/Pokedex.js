@@ -13,7 +13,6 @@ const useStyle = makeStyles((theme)=>({
 }))
 
 function Pokedex() {
-
 const classes = useStyle();
 const [pokemonData,setPokemonData]= useState(null)  
 useEffect(()=>{
