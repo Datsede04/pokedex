@@ -1,5 +1,5 @@
 
-import {Routes, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import Pokedex from './containers/Pokedex';
 import AppNavigator from './components/AppNavigator';
 import PokemonDetail from './containers/PokemonDetail';
@@ -14,11 +14,11 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
       <AppNavigator/>
-      <Routes>
-        <Route path='/' element={<Pokedex/>}/>
-        <Route path='/pokemon/:id' element={<PokemonDetail/>}/>
-        <Route path='/favorites' element={<Favorites/>}/>
-      </Routes>    
+      <Switch>
+        <Route path='/' component={Pokedex} exact/>
+        <Route path='/pokemon/:id' component={PokemonDetail} exact/>
+        <Route path='/favorites' component={Favorites} exact/>
+      </Switch>    
     </PersistGate>
     </Provider>
     </>

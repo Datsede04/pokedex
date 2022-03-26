@@ -6,7 +6,6 @@ import FavoriteIcon from "@material-ui/icons/Favorite"
 import { connect } from 'react-redux'
 import { toggleFavorite } from '../redux/actions.js'
 
-
 const styles = (theme) =>({
     pokedexContainer :{
         height:'80vh',
@@ -41,16 +40,17 @@ const styles = (theme) =>({
 class PokemonDetail extends Component {
   constructor(props){
       super(props)
+      this.props = props
       this.state = {
             pokemon:null
       }
   }
   componentDidMount(){
-      const  { match}=this.props
-      const {id} = match?.params
+      const {id} = this.props.match.params;
       axios.get( POKEMON_API_URL + "/"+ id).then((response)=> {
+
         if(response.status>=200 && response.status<200){
-            this.setState({pokemon:response.data})
+          this.setState({pokemon:response.data})
         }  
      })
   }
@@ -59,15 +59,18 @@ class PokemonDetail extends Component {
       let found = false
       this.props.favourites?.map((p)=>{
         if(p.id === pokemon.id){
-            found=true;
+            return found=true;
         }
       })
-  }
+     return found
+    }
 
  render() {
         const {classes} = this.props
-        const {pokemon} = this.props
+        const {pokemon} = this.state
+        console.log("pokemon",this.state);
         if(pokemon){
+          console.log(pokemon)
             const {name, sprites, height,width,weight,types} = pokemon
             return (
             <>
@@ -147,4 +150,3 @@ const mapDispatchToProps =(dispatch)=> ({
 })
 
 export default  withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PokemonDetail))
- 
